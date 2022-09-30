@@ -1,0 +1,63 @@
+<h1>
+  Welcome to {{title}}
+</h1>
+
+<h1>
+  Profile Editor
+</h1>
+
+<div *ngIf="displayEdit == false" class="two-col">
+  <h2>User Information</h2>
+  <div class = 'col-one'>
+  <label for="name"> Name:</label>
+  <span>
+    {{userObject.name}}
+  </span>
+  </div>
+  <br/>
+  <div class = 'col-one'>
+    <label  for="age">Age:</label>
+    <span> {{userObject.age}}</span>
+  </div>
+  <br/>
+  <div class = 'col-one'>
+    <label  for="favoriteColor">Favorite Color:</label>
+    <span> {{userObject.favoriteColor}}</span>
+  </div>
+
+</div>
+
+<div *ngIf="displayEdit == true" class="two-col">
+  <h2>Update User Information</h2>
+  <form #userForm="ngForm" (ngSubmit)="addUseDetails(userForm)">
+    <div class = 'col-one'>
+      <label  for="name"> Name:</label>
+      <span>
+        <input name="name" id="name" [(ngModel)]="userObject.name">
+      </span>
+
+    </div>
+    <br/>
+    <div class = 'col-one'>
+      <label for="age">Age:</label>
+      <span>
+        <input name="age" id="age" [(ngModel)]="userObject.age">
+      </span>
+    </div>
+    <br/>
+    <div class = 'col-one'>
+      <label for="favoriteColor">Favorite Color:</label>
+      <span>
+        <input name="favoriteColor" id="favoriteColor" [(ngModel)]="userObject.favoriteColor">
+      </span>
+    </div>
+    <br/>
+    <div class = 'col-one'>
+      <button class = 'col-one' type="submit"> Submit User details</button>
+    </div>
+
+  </form>
+</div>
+<br/>
+<br/>
+<button type="submit" (click)="toggleEdit()"> Toggle Edit</button>
