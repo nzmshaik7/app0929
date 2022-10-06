@@ -1,0 +1,9 @@
+<div>
+    <form #todoItemForm="ngForm" (ngSubmit)="addNewItem(todoItemForm)" >
+        <label>
+            Enter a New Task:
+        </label> &nbsp;
+        <input name="task" id="task" [(ngModel)]="todo_in_form.task">&nbsp;
+        <button type="submit">Add</button>
+    </form>
+</div>

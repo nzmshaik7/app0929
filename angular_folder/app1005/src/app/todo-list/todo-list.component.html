@@ -1,0 +1,20 @@
+
+<div>
+    <h2>Todo List</h2>
+    <h3>A place to store your todos</h3>
+
+    <div *ngIf="areAllTasksCompleted()">
+        <p> Congratulations! You have completedAllTasks</p>
+    </div>
+
+    <app-todo-item *ngFor="let c of todo_list_array" [todo]="c" 
+        (remove) ="removeTodoItem($event)" 
+        (complete) ="completeTodoItem($event)"
+        (reset) ="resetCompleteTodoItem($event)">
+        
+    </app-todo-item>
+
+
+<app-todo-form (save)="addTodoList($event)">
+
+</app-todo-form>

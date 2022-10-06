@@ -1,0 +1,14 @@
+<div>
+    <div>
+        <span *ngIf="todo.completed == true">
+            <button (click) = 'resetTodoItem()'> Reset Item</button>
+        </span>
+        <span *ngIf = "todo.completed == false">
+            <button (click) = 'completeTodoItem()'> Complete Item</button>
+        </span>
+        &nbsp;
+        <span> {{todo.task}} : {{todo.completed}}</span> &nbsp;
+        <button (click) = 'removeTodoItem()'> Delete Item</button>
+    </div>
+    <br/>
+</div>
