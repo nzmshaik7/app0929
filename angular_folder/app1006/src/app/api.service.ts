@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   getWeatherFromAPI(): Observable<any> {
-    const localapiUrl = 'https://api.openweathermap.org/data/2.5/current?zip=77002,us&APPID=61bad823a8a03402c4070934d47c16a0&units=us';
+    const localapiUrl = 'https://api.openweathermap.org/data/2.5/forecast?zip=77002,us&APPID=61bad823a8a03402c4070934d47c16a0&units=us';
     return this.http.get(localapiUrl);
   }
 
