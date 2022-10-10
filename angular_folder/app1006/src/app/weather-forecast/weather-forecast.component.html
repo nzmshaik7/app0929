@@ -15,3 +15,19 @@
 </ul>
 
 
+<h2>WeatherForeCast From OpenAPI</h2>
+
+<ul>
+    <p>City: {{forecastFromOpenAPI.city}}</p>
+    <p>
+        Country: {{forecastFromOpenAPI.country}}
+    </p>
+    <p *ngFor="let rec of forecastFromOpenAPI.weatherRecords">
+        <span>Date Time: {{rec.dateTime}}</span><br/>
+        <span>Description: {{rec.description}}</span><br/>
+        <span>Current Temperature: {{rec.currTemperature}}</span><br/>
+        <span>Feels Like Temperature: {{rec.feelsLike}}</span><br/>
+        <span>Minimum Temperature: {{rec.minTemperature}}</span><br/>
+        <span>Maximum Temperature: {{rec.maxTemperature}}</span><br/>
+    </p>
+</ul>
