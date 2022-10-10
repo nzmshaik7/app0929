@@ -1,0 +1,17 @@
+<h2>
+    Weather Forecast
+</h2>
+
+<ul *ngFor="let temp of temperatures">
+    <h3>Date: {{temp.startTime | date}}</h3>
+    <span>Time of the Day: {{temp.isDaytime? 'Day Time' : 'Night Time'}}</span><br/>
+    <span>
+        Temperature: {{temp.temperature}} {{temp.temperatureUnit}}
+    </span><br/>
+    <img src="{{temp.icon}}"><br/>
+    <span>
+        Forecast details: {{temp.detailedForecast}}
+    </span><br/>
+</ul>
+
+
