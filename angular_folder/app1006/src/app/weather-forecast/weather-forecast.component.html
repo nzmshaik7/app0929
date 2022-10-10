@@ -25,9 +25,9 @@
     <p *ngFor="let rec of forecastFromOpenAPI.weatherRecords">
         <span>Date Time: {{rec.dateTime}}</span><br/>
         <span>Description: {{rec.description}}</span><br/>
-        <span>Current Temperature: {{rec.currTemperature}}</span><br/>
-        <span>Feels Like Temperature: {{rec.feelsLike}}</span><br/>
-        <span>Minimum Temperature: {{rec.minTemperature}}</span><br/>
-        <span>Maximum Temperature: {{rec.maxTemperature}}</span><br/>
+        <span>Current Temperature: {{rec.currTemperature}} F</span><br/>
+        <span>Feels Like Temperature: {{rec.feelsLike}} F</span><br/>
+        <span>Minimum Temperature: {{rec.minTemperature}} F</span><br/>
+        <span>Maximum Temperature: {{rec.maxTemperature}} F</span><br/>
     </p>
 </ul>
