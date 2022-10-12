@@ -1,0 +1,6 @@
+<p>donuts-list works!</p>
+
+<li *ngFor = "let donut of donutsList">
+     <!-- <a routerLink="/donuts/{{donut.id}}">{{donut}}</a> -->
+     <a [routerLink] = "['/donuts', donut.id]"> {{donut.name}}</a>
+</li>
