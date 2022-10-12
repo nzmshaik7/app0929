@@ -20,13 +20,13 @@ export class DonutItemComponent implements OnInit {
     let id: number = Number(this.route.snapshot.paramMap.get("id"));
     console.log(`printingId: ${id}`);
 
-
     this.donutItemService.getDonutItemDetails(id).subscribe(
       (data: any) => {
-      console.log(data)
-      this.donutItem = data
+      console.log(JSON.stringify(data));
+      this.donutItem = data;
     }
     );
+    //this.donutItem = this.donutItemService.getDonutItemDetails(id);
   }
 
 }
