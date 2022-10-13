@@ -28,9 +28,9 @@ export class DonutItemComponent implements OnInit {
     }
     );
   }
-  
+
   addItemToCart() {
-    const itemAddedToCart:string = this.cartService.addDonutToCart(this.donutItem.id);
+    const itemAddedToCart:string = this.cartService.addDonutToCart(this.donutItem);
     if (itemAddedToCart == 'success') {
       alert('Item added to Cart')
     }
