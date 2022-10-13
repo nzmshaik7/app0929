@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router'
 import { DonutItemService } from '../donut-item.service';
 import { DonutItemInterface } from '../donut-item-interface';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-donut-item',
@@ -12,7 +13,8 @@ import { DonutItemInterface } from '../donut-item-interface';
 export class DonutItemComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
-    private donutItemService: DonutItemService) { }
+    private donutItemService: DonutItemService,
+    private cartService: CartService) { }
 
   donutItem:DonutItemInterface ={} as DonutItemInterface;
 
@@ -22,11 +24,16 @@ export class DonutItemComponent implements OnInit {
 
     this.donutItemService.getDonutItemDetails(id).subscribe(
       (data: any) => {
-      console.log(JSON.stringify(data));
       this.donutItem = data;
     }
     );
-    //this.donutItem = this.donutItemService.getDonutItemDetails(id);
+  }
+  
+  addItemToCart() {
+    const itemAddedToCart:string = this.cartService.addDonutToCart(this.donutItem.id);
+    if (itemAddedToCart == 'success') {
+      alert('Item added to Cart')
+    }
   }
 
 }

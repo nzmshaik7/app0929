@@ -1,11 +1,16 @@
 <p>donut-item works!</p>
 
-
+<a [routerLink] = '/cart'> Go to Cart</a>
+<button (click) = addItemToCart()>Add to Cart</button>
 <ul> 
     <p> Id: {{donutItem.id}}</p>
     <p> Name: {{donutItem.name}}</p>
     <p> Calories: {{donutItem.calories}}</p>
-    <p> Link: {{donutItem.ref}}</p>
-    <!-- <p> photo: <img src={{donutItem.photo}>}</p>
-    <p> photo attributes: <img src={{donutItem.photo_attribution}>}</p> -->
+    <p>Extras:   
+        <li *ngFor="let e of donutItem.extras" style ="tab-size: 8">
+            {{e}}
+        </li>
+    </p>
+    <img src={{donutItem.photo}} width="500" height="300">
+    <p> photo attribution:: {{donutItem.photo_attribution}}</p>
 </ul>

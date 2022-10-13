@@ -16,21 +16,4 @@ export class DonutsListService {
     return this.http.get<any>(this.apiUrl).pipe(map (res => res.results));
   } 
 
-  // getDonutInfoById(donutId: number): Observable<any> {
-  //   let donutsList: DonutItemInterface[] = [];
-  //   let donutInfo: DonutInfoInterface = {} as DonutInfoInterface;
-  //   console.log('getDonutInfoById');
-  //   this.getDonutsList().subscribe(
-  //     (data:any) => {
-  //       data.forEach((d: { id: number; ref: string;})=> {
-  //         let val: string = 'Fail';
-  //         if(d.id == donutId) {
-  //           console.log('printSuccess');
-  //           console.log(d.ref);
-  //           return this.http.get<any>(d.ref);
-  //       }
-  //       })
-  //     });
-  // }
-
 }

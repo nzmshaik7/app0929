@@ -20,13 +20,11 @@ export class DonutItemService {
     return this.donutsListService.getDonutsList().pipe(
       switchMap((data:any) => {
         const record:any = data.filter ((d: { id: number; }) => d.id == donutItemId)[0];
-        return this.getDonutItem(record.ref);
+        return this.getDonutItemRecord(record.ref);
       }))
     }
   
-  getDonutItem(url: string): Observable<any>  {
-    console.log('reachedindividualService', url)
-    //this.http.get<any>(url).subscribe(res => console.log(res));
+  getDonutItemRecord(url: string): Observable<any>  {
     return this.http.get<any>(url);
   }
 }
