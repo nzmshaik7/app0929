@@ -29,5 +29,24 @@ export class ShoppingCartComponent implements OnInit {
     return price;
   }
 
+  totalCalories(): number {
+    let calories: number = 0;
+    this.cartItems.forEach(item => {
+      calories += item.donutCount * item.donutCalories;
+      return calories;
+    })
+    return calories;
+  }
+
+  removeDonutFromCart(donutCartId:number) {
+    const donutIndex: number = this.cartItems.findIndex((cartItem) => cartItem.donutId == donutCartId);
+    this.cartItems.splice(donutIndex, 1);
+  }
+  removeOneQuantityFromCart(donutCartId:number) {
+    const donutIndex: number = this.cartItems.findIndex((cartItem) => cartItem.donutId == donutCartId);
+    this.cartItems[donutIndex].donutCount -= 1;
+  }
+
+  
 
 }

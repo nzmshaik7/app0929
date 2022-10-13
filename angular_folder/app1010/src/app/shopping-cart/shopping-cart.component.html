@@ -1,9 +1,21 @@
 <p>shopping-cart works!</p>
 <h2>Cart Items</h2>
-    <li *ngFor="let c of cartItems">
-        Name: {{c.donutName}} :::: Price: {{c.donutCount}} X ${{c.donutPrice | number : '1.2-2'}} = ${{(c.donutCount * c.donutPrice) | number : '1.2-2'}}
-    </li>
+
+<table>
+    <tr>
+        <th>Donut Name</th>
+        <th> Calories</th>
+        <th> Price</th>
+    </tr>
+    <tr *ngFor="let c of cartItems">
+        <td>{{c.donutName}}</td>
+        <td> {{c.donutCount}} X {{c.donutCalories}} = {{(c.donutCount * c.donutCalories)}}</td>
+        <td> {{c.donutCount}} X ${{c.donutPrice | number : '1.2-2'}} = ${{(c.donutCount * c.donutPrice) | number :
+            '1.2-2'}}</td>
+        <button (click)="removeOneQuantityFromCart(c.donutId)"> Remove One Quantity</button>
+        <button (click)="removeDonutFromCart(c.donutId)"> Remove Item</button>
+    </tr>
+</table>
+
 <h3> Total Price: {{totalPrice()}}</h3>
-
-
-
+<h3> Total Calories: {{totalCalories()}}</h3>
