@@ -13,7 +13,8 @@ export class CartService {
   addDonutToCart(donutId: number) {
     const donutItemInCart:number = this.cartItems.findIndex((donut) => donut.donutId == donutId);
 
-    if (donutItemInCart) {
+    console.log(donutItemInCart);
+    if (donutItemInCart >= 0) {
       this.cartItems[donutItemInCart].donutCount += 1;
     } else {
       this.cartItems.push({
@@ -21,6 +22,7 @@ export class CartService {
         donutCount: 1
       })
     }
+    console.log(this.cartItems);
     return 'success'
   }
 }
