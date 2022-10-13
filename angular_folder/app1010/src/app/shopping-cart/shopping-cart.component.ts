@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { CartInterface } from '../cart-interface';
 import { CartService } from '../cart.service';
@@ -19,6 +20,14 @@ export class ShoppingCartComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
   }
 
+  totalPrice(): number {
+    let price: number = 0;
+    this.cartItems.forEach(item => {
+      price += item.donutCount * item.donutPrice;
+      return price;
+    })
+    return price;
+  }
 
 
 }

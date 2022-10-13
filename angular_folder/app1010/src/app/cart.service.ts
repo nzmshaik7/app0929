@@ -21,7 +21,8 @@ export class CartService {
       this.cartItems.push({
         donutId: donutObject.id,
         donutName: donutObject.name,
-        donutCount: 1
+        donutCount: 1,
+        donutPrice: 1.00 //default for now
       })
     }
     console.log(this.cartItems);

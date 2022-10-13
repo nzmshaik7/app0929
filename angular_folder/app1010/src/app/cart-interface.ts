@@ -1,5 +1,6 @@
 export interface CartInterface {
     donutId: number,
     donutName: string,
-    donutCount: number
+    donutCount: number,
+    donutPrice: number
 }
