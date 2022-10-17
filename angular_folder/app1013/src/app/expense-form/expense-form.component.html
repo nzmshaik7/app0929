@@ -1,0 +1,52 @@
+<p>expense-form works!</p>
+
+
+
+<div>
+    <h2>Add an Expense</h2>
+    <form #expenseForm="ngForm" (ngSubmit)="addNewExpense(expenseForm)">
+      <div>
+        <label for="amount">Amount:</label>
+        <span>
+          <input name="amount" id="amount" type = "number" [(ngModel)]="expenseRecord.amount" 
+          #amount="ngModel" required min = 0.01>
+        </span>
+        <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert alert-danger mt-2" >
+            <div *ngIf="amount.errors?.['required']">Amount is required.</div>
+            <div *ngIf="amount.errors?.['min']">Amount should be greater than 0</div>
+        </div>
+      </div>
+      <br/>
+      <div>
+        <label for="category">Category:</label>
+        <span>
+          <select name="category" id="category" [(ngModel)]="expenseRecord.category"
+           #category="ngModel" required >
+            <option value="" >Select a Category</option>
+            <option *ngFor="let c of enumKeys(enumCategories)" [value]="c">
+                    {{ c }}
+            </option>
+          </select>
+          <div *ngIf="category.invalid && (category.dirty || category.touched)" class="alert alert-danger mt-2" >
+            <div *ngIf="category.errors?.['required']">Amount is required.</div>
+        </div>
+        </span>
+      </div>
+      <br/>
+
+      <div>
+        <label for="description">Description:</label>
+          <input class="form-control" name="description" id="description" [(ngModel)]="expenseRecord.description" 
+            #description="ngModel" required minlength="4">
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger mt-2" >
+            <div *ngIf="description.errors?.['required']">Description is required.</div>
+            <div *ngIf="description.errors?.['minlength']">Description must be at least 3 characters.</div>
+        </div>
+      </div>
+      <br/>
+      <div>
+        <button type="submit" class="btn btn-primary" >Add Expense</button>
+      </div>
+  
+    </form>
+  </div>

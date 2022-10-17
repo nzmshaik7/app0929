@@ -1,0 +1,20 @@
+<p>budget-form works!</p>
+
+
+<div>
+    <h2>Add a Budget</h2>
+    <form #budgetForm="ngForm" (ngSubmit)="addNewBudget(budgetForm)">
+        <div>
+            <label for="amount">Amount:</label>
+            <span>
+                <input name="amount" id="amount" type="number" [(ngModel)]="budgetRecord.amount" #amount="ngModel"
+                    required min=0.01>
+            </span>
+            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert alert-danger mt-2">
+                <div *ngIf="amount.errors?.['required']">Amount is required.</div>
+                <div *ngIf="amount.errors?.['min']">Amount should be greater than 0</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Budget</button>
+    </form>
+</div>
