@@ -1,0 +1,87 @@
+<div *ngIf="questionsLoaded == false">
+    <h3>Select Trivia Type:</h3>
+        <form #triviaForm="ngForm" (ngSubmit)="getTriviaQuestions(triviaForm)">
+            <div>
+                <label for="difficulty">Difficulty:  </label>
+                <span>
+                    <select name="difficulty" id="difficulty" [(ngModel)]="triviaRecord.difficultyLevel" #difficulty="ngModel"
+                        required>
+                        <option value="" selected>Select a Difficulty</option>
+                        <option *ngFor="let c of enumKeys(enumDifficulties)" [value]="c">
+                            {{ c }}
+                        </option>
+                    </select>
+                    <div *ngIf="difficulty.invalid && (difficulty.dirty || difficulty.touched)"
+                        class="alert alert-danger mt-2">
+                        <div *ngIf="difficulty.errors?.['required']">Difficulty is required.</div>
+                    </div>
+                </span>
+            </div>
+            <br/>
+            <div>
+                <label for="category">Category:  </label>
+                <span>
+                    <select name="category" id="category" [(ngModel)]="triviaRecord.category" #category="ngModel"
+                        required>
+                        <option value="">Select a Category</option>
+                        <option *ngFor="let c of enumKeys(enumCategories)" [value]="c">
+                            {{ c }}
+                        </option>
+                    </select>
+                    <div *ngIf="category.invalid && (category.dirty || category.touched)"
+                        class="alert alert-danger mt-2">
+                        <div *ngIf="category.errors?.['required']">Category is required.</div>
+                    </div>
+                </span>
+            </div>
+            <br />
+            <div>
+                <button type="submit" class="btn btn-primary">Submit Trivia Selection </button>
+            </div>
+        </form>
+</div>
+
+ <div *ngIf="questionsLoaded == true && allQuestionsAnswered == false">
+    <app-trivia-question-form [question] = "loadQuestionToQuestionForm()" [ipDifficulty] = "triviaRecord.difficultyLevel" (sendAnswer) = "getAnswer($event)"> </app-trivia-question-form>
+ </div>
+ <br/>
+
+<div *ngIf="allQuestionsAnswered">
+    <div *ngIf="!userDetailsEntered">
+        <form #userForm="ngForm" (ngSubmit) ="submitUserName(userForm)">
+            <div>
+                <label> Enter User Name:</label>
+                <input type="text" id="username" name="username"  class="form-control" [(ngModel)]="userDetailsForm.username" #username="ngModel" required minlength="2">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger mt-2" >
+                    <div *ngIf="username.errors?.['required']">User Name is required.</div>
+                    <div *ngIf="username.errors?.['minlength']">User Name must be at least 2 characters.</div>
+                </div>
+
+            </div>
+            <br/>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit User Name</button>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <div *ngIf="userDetailsEntered">
+        <div>
+            <p> User Name: {{userDetailsForm.username}}</p>
+            <p> Total Score: {{userDetailsForm.totalScore}}</p>
+            <p> Total Questiosn Answered: {{userDetailsForm.totalQuestionsAnswered}}</p>
+            <p> Cummulative Points: {{userDetailsForm.cummulativePoints}}</p>
+            <button (click) ="resetTriviaSelectionForm()">Play More</button>
+        </div>
+        <br/>
+        <div>
+            <button (click) ="submitScoreAndResetUser()">Done? Submit Score</button>
+         </div>
+    </div>
+ </div>
+
+ <div>
+    <br/>
+    <a [routerLink]="['/userslist']">Get ALL Users Info</a>
+ </div>
+

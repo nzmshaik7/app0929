@@ -1,0 +1,54 @@
+<!-- <div>
+    <form #questionForm="ngForm" (ngSubmit)="submitAnswer(questionForm)">
+        <div>
+            <p> Question: {{question.question}}</p>
+        </div>
+        <div>
+            <p> Difficulty: {{ipDifficulty}}</p>
+        </div>
+        <br/>
+
+        <div>
+            <label for="answerSelected">Select Answer:</label>
+            <span>
+                <select name="answerSelected" id="answerSelected" [(ngModel)]="question.answerSelected" #answerSelected="ngModel"
+                    required>
+                    <option value="">Select an Answer</option>
+                    <option *ngFor="let ans of question.answerChoices" [value]="ans">
+                        {{ ans }}
+                    </option>
+                </select>
+                <div *ngIf="answerSelected.invalid && (answerSelected.dirty || answerSelected.touched)"
+                    class="alert alert-danger mt-2">
+                    <div *ngIf="answerSelected.errors?.['required']">Answer is required.</div>
+                </div>
+            </span>
+        </div>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Submit Answer</button>
+        </div>
+
+    </form>
+
+</div> -->
+
+
+<div>
+    <div>
+        <p> Question: {{question.question}}</p>
+    </div>
+    <div>
+        <p> Difficulty: {{ipDifficulty}}</p>
+    </div>
+    <br />
+
+    <div>
+        <label for="answerSelected">Select Answer:</label>
+        <span *ngFor ="let choice of question.answerChoices" >
+            &nbsp;
+            &nbsp;
+            <button (click) = "submitAnswerTwo(choice)"> {{choice}}</button>
+        </span>
+    </div>
+</div>

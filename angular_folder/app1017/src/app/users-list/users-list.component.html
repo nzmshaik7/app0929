@@ -1,0 +1,21 @@
+<h2><a [routerLink]="['']">Go Home</a></h2>
+
+<table>
+    <tr>
+        <th>User Name</th>
+        <th>Total Correct Answers </th>
+        <th> Total Questions Answered</th>
+        <th> Cummulative Points </th>
+        <th> Percentage</th>
+        <th> Delete This User</th>
+    </tr>
+    <tr *ngFor="let user of usersList">
+        <td style = "text-align:center"> {{user.username}}</td>
+        <td style = "text-align:center"> {{user.totalScore}}</td>
+        <td style = "text-align:center"> {{user.totalQuestionsAnswered}}</td>
+        <td style = "text-align:center"> {{user.cummulativePoints}}</td>
+        <td style = "text-align:center"> {{(user.totalScore/user.cummulativePoints)*100 | number : '2.2-2' }} %</td>
+        <td style = "text-align:center"> <button (click)="deleteUser(user)"> Delete</button></td>
+
+    </tr>
+</table>
